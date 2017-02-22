@@ -1,0 +1,179 @@
+﻿.account-form{
+    float:right;
+    margin-top:11%;
+    width:71.4%;
+    padding:1% 2%;
+    padding-bottom:8%;
+    height:100%;
+    background:#fff;
+}
+.account-form h2{
+    color:#444;
+    width:70%;
+    padding:1% 0;
+    
+}
+.account-form section{
+  border-bottom:1px solid #ddd;
+  font-size:90%;
+  padding:3% 0;
+}
+.account-form section img{
+    float:left;
+    margin:1% 4%;
+    margin-left:0;
+    width:15%;
+}
+.account-form section button{
+    float:right;
+    border-radius:50%;
+    padding:0.5% 0.7%;
+    color:#666;
+    cursor:pointer;
+    background:none;
+    border:none;
+    outline:none;
+}
+.account-form table{
+    width:100%;
+}
+.account-form table tr td p{
+    font-weight:600;
+    padding:2% 0;
+    color:gray;
+    border-bottom:1px solid #eee;
+}
+.account-form table tr td label{
+     margin:2%;
+    font-size:80%;
+}
+.account-form table tr td{
+    width:33%;
+}
+.account-form table tr td input{
+    margin:2%;
+    width:90%;
+    padding:2%;
+    border:1px solid #ddd;
+    border-radius:2px;
+}
+
+.squaredThree {
+	width: 500px;
+	height: 20px;
+	margin: 20px;
+	position: relative;
+	display:inline;
+	color:#555;
+	font-size:14px;
+}
+
+.squaredThree label {
+	cursor: pointer;
+	position: absolute;
+	width: 15px;
+	height: 16px;
+	left: -4px;
+	top: -2px;
+	border-radius:50%;
+	background: #fff;
+	border:2px solid #aaa;
+
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222',
+		endColorstr='#45484d', GradientType=0);
+}
+
+.squaredThree label:after {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity = 0);
+	content: '';
+	position: absolute;
+	width: 8px;
+	height: 4px;
+	background: transparent;
+	top: 4px;
+	left: 2px;
+	border: 2px solid white;
+	border-top: none;
+	border-right: none;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+.squaredThree label:hover {
+	border:2px solid #555;
+	
+	
+}
+
+.squaredThree input[type=radio]:checked+label {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity = 100);
+	opacity: 1;
+	background:#555;
+	border:1px solid #555;
+}
+
+.squaredThree input[type=radio] {
+	width: 13px;
+	height: 13px;
+	margin-left: 0px;
+	margin-top: 20px;
+	outline: none;
+}
+.submit-panel{
+    position:fixed;
+    bottom:0;
+    right:0;
+    float:right;
+    width:68.5%;
+    height:0;
+    padding:0% 3%;
+    background:#256ae6;
+    box-shadow:0 -2px 8px 2px #ccc;
+}
+.submit-panel input{
+    float:right;
+    border:none;
+    background:#256ae6;
+    width:100px;
+    cursor:pointer;
+    border-radius:2px;
+   
+}
+.overflow-menu{
+    position:absolute;
+    float:right;
+    margin:3% 56%;
+    list-style:none;
+    background:#fff;
+    padding:1.5%;
+    width:12%;
+    height:auto;
+    box-shadow:0 1px 2px 1px #ccc;
+    overflow:hidden;
+    transform:scale(0);
+    transform-origin:top right;
+    transition:all 0.2s;
+}
+.overflow-menu li{
+    margin:0;
+    width:100%;
+    padding:8%;
+}
+.overflow-menu li a{
+color:#444;
+}
+.overflow-menu.active{
+    transform:scale(1);
+    transform-origin:top right;
+}
+.nomineeLbl{
+    margin:2%;
+    font-size:15px;
+    font-weight:bold;
+    color:#333;
+}

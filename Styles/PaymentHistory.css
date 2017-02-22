@@ -1,0 +1,62 @@
+﻿.history-container{
+    float:right;
+    margin-top:11%;
+    width:75%;
+    padding:0;
+    padding-bottom:8%;
+    height:100%;
+    background:#fff;
+    border-bottom:1px solid #ccc;
+}
+.history-container section{
+    padding:2%;
+    height:40px;
+    border-bottom:1px solid #aaa;
+}
+.history-container section h2{
+    float:left;
+    width:60%;
+    margin:0;
+    color:#444;
+}
+.history-container section input{
+    float:right;
+    width:30%;
+    padding:1%;
+    background:#ddd;
+    border:none;
+    border-radius:2px;
+}
+
+.history-container table{
+    padding:2%;
+    width:100%;
+}
+.history-container table tr th{
+     text-align:left;
+     font-size:14px;
+     color:#888;
+     padding:2% 0;
+     border-bottom:1px solid #ccc;
+}
+.history-container table tr td{
+    text-align:left;
+    padding:1% 0%;
+    padding-right:2%;
+    font-size:13px;
+}
+.history-container table tr td:nth-child(1){
+    width:10%;
+}
+#noRec{
+    width:100%;
+    text-align:center;
+    color:gray;
+    display:none;
+    font-size:100%;
+    font-weight:normal;
+}
+#noRec i{
+    color:#ccc;
+    font-size:300%;
+}

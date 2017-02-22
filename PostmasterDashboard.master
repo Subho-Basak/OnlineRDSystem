@@ -1,0 +1,111 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="PostmasterDashboard.master.cs" Inherits="PostmasterDashboard" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+     <link href="Styles/Dashboard.css" rel="stylesheet" />
+     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"/>
+       <script type="text/javascript" src="Script/jquery-2.1.4.js"></script>
+    <asp:ContentPlaceHolder id="head" runat="server">
+       
+    </asp:ContentPlaceHolder>
+</head>
+<body bgcolor="#eee">
+    
+    <form id="form1" runat="server" method="post">
+       <header>
+        <h1>Online RD Management System</h1>
+        <section>
+            <h3><iframe src="http://free.timeanddate.com/clock/i5l2q60k/n505/fs18/fc555" frameborder="0" width="118" height="24"></iframe>
+</h3>
+            <h4><iframe src="http://free.timeanddate.com/clock/i5l2q60k/n505/fc555/tt1" frameborder="0" width="203" height="18"></iframe>
+
+</h4>
+
+        </section>
+    </header>
+    <div class="nav-drawer">
+
+        <h3>My Dashboard</h3>
+        <asp:Button ID="Button1" runat="server" Text="LOGOUT" BackColor="#256AE6" ForeColor="White" Height="34px" Width="84px" />
+        <ul id="scroll">
+            <div class="force-overflow"></div>
+            <li><span>ACCOUNT DETAILS</span>
+                <ul>
+                    <li><a href="DemoPage.aspx">Add new account</a></li>
+                    <li><a href="#">Update account</a></li>
+                    <li><a href="ViewAccounts.aspx">View accounts</a></li>
+                    <li><a href="#">Delete account</a></li>
+
+                </ul>
+            </li>
+            <li><span>PAYMENT DETAILS</span>
+                <ul>
+                    <li><a href="MakePayment.aspx">Make payment</a></li>
+                    <li><a href="CheckPayment.aspx">Check payment</a></li>
+                    <li><a href="PaymentHistory.aspx">Payment history</a></li>
+                    <li><a href="CheckFine.aspx">Check fine</a></li>
+                    <li><a href="CheckDue.aspx">Check due</a></li>
+                    <li><a href="DueHistory.aspx">Due history</a></li>
+
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+    <div class="search-bar">
+        <asp:TextBox ID="dropdown" runat="server" Text="Account Number"></asp:TextBox><i></i><br />
+        <ul>
+            <li>Account Number</li>
+            <li>Account Holder </li>
+        </ul>
+        <asp:TextBox ID="TextBox1" runat="server" placeholder="Search" onkeypress="return srcType(event,this.id)" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+            <span runat="server" id="errMsg"></span>
+    </div>
+    <div>
+         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+
+    </form>
+
+     <script type="text/javascript">
+     
+        $(document).ready(function () {
+          
+            $('#dropdown').click(function () {
+                $('.search-bar ul').css({ 'display': 'block' });
+            });
+            $('.search-bar ul li').click(function () {
+                var n = $(this).text();
+                $('#dropdown').val(n);
+                $('.search-bar ul').css({ 'display': 'none' });
+            });
+
+        });
+
+        function srcType(evt, id) {
+           var type= document.getElementById("srctyp");
+           if (type == "Account Number") {
+
+               var charCode = (evt.which) ? evt.which : evt.keyCode;
+               if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+             
+                   return false;
+
+               }
+
+               return true;
+
+           }
+        }
+    </script>
+
+
+</body>
+</html>
