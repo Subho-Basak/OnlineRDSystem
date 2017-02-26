@@ -1,0 +1,55 @@
+﻿.delete-panel{
+    float:right;
+    margin-top:11%;
+    width:75.4%;
+    padding:0;
+    padding-bottom:8%;
+    height:100%;
+    background:#fff;
+    border-bottom:1px solid #ccc;
+}
+#progress{
+    width:100%;
+    height:4px;
+    background:#eee;
+}
+#progress-complete{
+    width:33%;
+    height:100%;
+    background:#069bcb;
+}
+
+fieldset{
+    border:none;
+    margin:2% 20%;
+}
+
+fieldset h2{
+    text-align:center;
+    font-weight:normal;
+}
+
+fieldset input{
+    padding:1% 2%;
+    width:50%;
+   margin:0 23%;
+}
+fieldset button{
+    float:right;
+    margin:2% 3%;
+    border:none;
+    outline:none;
+    border-radius:2px;
+    background:#186ac3;
+    color:white;
+    padding:1.5% 4%;
+    font-size:90%;
+    cursor:pointer;
+}
+.label{
+    float:left;
+    margin:2% ;
+    margin-left:23%;
+    width:10%;
+    font-size:80%;
+}
