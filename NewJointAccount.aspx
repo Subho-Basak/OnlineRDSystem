@@ -11,8 +11,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
     <div class="account-form">
-        <h2>Joint Account <button>Single account<i class="material-icons">arrow_drop_down</i></button></h2>
-       
+        <h2>Add Account <span>Joint</span><button type="button"><i class="material-icons">more_vert</i></button></h2>
+       <ul>
+           <li><a href="DemoPage.aspx">Single account</a></li>
+           <li><a href="NewJointAccount.aspx">Joint account</a></li>
+       </ul>
          <table border="0">
              <tr>
                  <td colspan="3"> <p>Personal Details - <span>Primary account holder</span></p></td>
@@ -24,7 +27,8 @@
              </tr>
              <tr>
                  <td>
-                     <asp:TextBox ID="TextBox1" runat="server" MaxLength="10"></asp:TextBox></td>
+                     <asp:TextBox ID="TextBox1" runat="server" CssClass="accNum" MaxLength="10"></asp:TextBox></td>
+                     <td colspan="2"><i>i</i><span></span></td>
 
              </tr>
              <tr>
@@ -81,7 +85,7 @@
                  <td>
                      <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox></td>
                  <td>
-                     <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox></td>
+                     <asp:TextBox ID="TextBox8" runat="server" MaxLength="10"></asp:TextBox></td>
                  
               </tr>
              <tr>
@@ -161,7 +165,7 @@
                  <td>
                      <asp:TextBox ID="TextBox33" runat="server"></asp:TextBox></td>
                  <td>
-                     <asp:TextBox ID="TextBox34" runat="server"></asp:TextBox></td>
+                     <asp:TextBox ID="TextBox34" runat="server" MaxLength="10"></asp:TextBox></td>
                  
               </tr>
              <tr>
@@ -190,10 +194,10 @@
              </tr>
              <tr>
                  <td>
-                     <asp:TextBox ID="TextBox12" runat="server"></asp:TextBox>
+                     <asp:TextBox ID="TextBox12" runat="server" ReadOnly="True"></asp:TextBox>
                  </td>
                  <td>
-                     <asp:TextBox ID="TextBox13" runat="server"></asp:TextBox>
+                     <asp:TextBox ID="TextBox13" runat="server" ReadOnly="True"></asp:TextBox>
                  </td>
                 
              </tr>
@@ -253,11 +257,58 @@
              </tr>
               
          </table>
-           <div class="submit-panel">
+           <div runat="server" id="submitpanel" class="submit-panel">
+
+                   
+               <asp:panel runat="server" id="errPanel" CssClass="error">
+                   <i class="material-icons">clear</i><label id="Label1" runat="server"></label>
+               </asp:panel>
+
+               <asp:label runat="server" id="errMsg" text=""></asp:label>
                <asp:Button ID="submitBtn" runat="server" Text="CREATE ACCOUNT" BackColor="#005CB9" BorderStyle="None" ForeColor="White" Height="39px" Width="201px" OnClick="submitBtn_Click" />
            </div>
 
         
     </div>
+
+    <script>
+
+        $(document).ready(function () {
+
+ 
+
+            $('.account-form h2 button').click(function () {
+                $('.account-form ul').toggleClass("active");
+            });
+
+            
+            $('.accNum').blur(function () {
+                var data = JSON.stringify({ accountno: $('.accNum').val() });
+                //var accountno=$('.accNum').val();
+                $.ajax({
+                    type: "post",
+                    url: 'NewJointAccount.aspx/validateAccountNo',
+                    contentType: 'application/json;charset=UTF-8',
+                    datatype: "json",
+                    data: data,
+
+                    success: function (response) {
+
+                        if (response.d === "false") {
+                            $('.account-form table tr:nth-child(3) td input').val("");
+                            $('.account-form table tr td i').css({ 'visibility': 'visible', 'background': '#e23131' });
+                            $('.account-form table tr td span:nth-child(2)').css({ 'color': '#e23131' });
+                            $('.account-form table tr td span:nth-child(2)').text("The account number already exists.Try a different one.")
+                        } else {
+                            $('.account-form table tr td i').css({ 'visibility': 'visible', 'background': '#28c422' });
+                            $('.account-form table tr td span:nth-child(2)').css({ 'color': '#28c422' });
+                            $('.account-form table tr td span:nth-child(2)').text("The account number is available");
+                        }
+                    }
+
+                });
+            });
+        });
+    </script>
 </asp:Content>
 

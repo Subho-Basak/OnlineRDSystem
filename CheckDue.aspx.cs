@@ -14,10 +14,15 @@ public partial class CheckDue : System.Web.UI.Page
     StringBuilder htmlTable = new StringBuilder();
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
-            DueSingleAccount();
+
+        
+        if (!IsPostBack) { 
+        Button2.Style.Add("border-bottom", "3px solid #444");
+        DueSingleAccount();
+
     }
-    
+    }
+
 
     protected void submitBtn_Click(object sender, EventArgs e)
     {
@@ -38,7 +43,11 @@ public partial class CheckDue : System.Web.UI.Page
 
     protected void Button2_Click(object sender, EventArgs e)
     {
+       
         DueSingleAccount();
+      
+        Button1.Style.Remove("border-bottom");
+        Button2.Style.Add("border-bottom", "3px solid #444");
     }
 
     private void DueSingleAccount()
@@ -51,6 +60,7 @@ public partial class CheckDue : System.Web.UI.Page
         SqlDataReader articleReader = cmd.ExecuteReader();
 
         htmlTable.Append("<table border='0'>");
+        htmlTable.Append("<thead>");
         htmlTable.Append("<tr>");
         htmlTable.Append("<th>ID</th>");
         htmlTable.Append("<th>DATE</th>");
@@ -60,6 +70,8 @@ public partial class CheckDue : System.Web.UI.Page
         htmlTable.Append("<th>FINE</th>");
         htmlTable.Append("<th>TOTAL AMOUNT</th>");
         htmlTable.Append("<th>STATUS</th>");
+        htmlTable.Append("</tr>");
+        htmlTable.Append("</thead>");
         if (articleReader.HasRows)
         {
 
@@ -67,6 +79,7 @@ public partial class CheckDue : System.Web.UI.Page
             while (articleReader.Read())
             {
                 DateTime date = Convert.ToDateTime(articleReader["paymentdate"]);
+                htmlTable.Append("<tbody>");
                 htmlTable.Append("<tr>");
                 htmlTable.Append("<td><h3>" + articleReader["paymentid"] + "</h3></td>");
                 htmlTable.Append("<td>" + date.Date.ToString("d") + "</td>");
@@ -78,6 +91,7 @@ public partial class CheckDue : System.Web.UI.Page
                 htmlTable.Append("<td>" + articleReader["status"] + "<br/>" + articleReader["cleardate"] + "</td>");
 
                 htmlTable.Append("</tr>");
+                htmlTable.Append("</tbody>");
             }
             htmlTable.Append("</table>");
 
@@ -86,12 +100,20 @@ public partial class CheckDue : System.Web.UI.Page
             articleReader.Close();
             articleReader.Dispose();
         }
+        else
+        {
+            theMsg.Visible = true;
+        }
 
     }
 
     protected void Button1_Click(object sender, EventArgs e)
     {
+       
         DueJointAccount();
+       
+        Button2.Style.Remove("border-bottom");
+        Button1.Style.Add("border-bottom", "3px solid #444");
     }
 
     private void DueJointAccount()
@@ -104,6 +126,7 @@ public partial class CheckDue : System.Web.UI.Page
         SqlDataReader articleReader = cmd.ExecuteReader();
 
         htmlTable.Append("<table border='0'>");
+        htmlTable.Append("<thead>");
         htmlTable.Append("<tr>");
         htmlTable.Append("<th>ID</th>");
         htmlTable.Append("<th>DATE</th>");
@@ -113,6 +136,8 @@ public partial class CheckDue : System.Web.UI.Page
         htmlTable.Append("<th>FINE</th>");
         htmlTable.Append("<th>TOTAL AMOUNT</th>");
         htmlTable.Append("<th>STATUS</th>");
+        htmlTable.Append("</tr>");
+        htmlTable.Append("</thead>");
         if (articleReader.HasRows)
         {
 
@@ -120,6 +145,7 @@ public partial class CheckDue : System.Web.UI.Page
             while (articleReader.Read())
             {
                 DateTime date = Convert.ToDateTime(articleReader["paymentdate"]);
+                htmlTable.Append("<tbody>");
                 htmlTable.Append("<tr>");
                 htmlTable.Append("<td><h3>" + articleReader["paymentid"] + "</h3></td>");
                 htmlTable.Append("<td>" + date.Date.ToString("d") + "</td>");
@@ -131,6 +157,7 @@ public partial class CheckDue : System.Web.UI.Page
                 htmlTable.Append("<td>" + articleReader["status"] + "<br/>" + articleReader["cleardate"] + "</td>");
 
                 htmlTable.Append("</tr>");
+                htmlTable.Append("</tbody>");
             }
             htmlTable.Append("</table>");
 
@@ -139,7 +166,12 @@ public partial class CheckDue : System.Web.UI.Page
             articleReader.Close();
             articleReader.Dispose();
         }
+        else
+        {
+            theMsg.Visible = true;
+        }
 
     }
+
 }
     

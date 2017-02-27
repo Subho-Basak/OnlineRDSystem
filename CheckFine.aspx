@@ -10,63 +10,56 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="fine-form">
         <h2>Check Fine <button type="button" id="accType"><i class="material-icons">supervisor_account</i><i class="material-icons">arrow_drop_down</i></button>
-            <asp:TextBox ID="TextBox1" runat="server" placeholder="Account number" OnTextChanged="TextBox1_TextChanged"></asp:TextBox></h2>
+            <asp:TextBox ID="TextBox1" runat="server" placeholder="Account number" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="TextBox2" runat="server" placeholder="joint Account number" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
+        </h2>
 
         <ul>
             <li><i class="material-icons">person</i>Single</li>
              <li><i class="material-icons">supervisor_account</i>Joint</li>
         </ul>
-        <h5>
-            <asp:Label ID="Label1" runat="server" Text="Label">Sorry we couldn't find any account</asp:Label></h5>
+       <h5 runat="server" id="theMsg"><i class="material-icons">announcement</i><br />
+            <asp:Label ID="Label1" runat="server" Text="Label">No fine in this account</asp:Label></h5>
         
+
+        <asp:Panel ID="tableContainer" runat="server">
         <table>
+
             <tr>
-                <td>Account number</td>
-                <td>
-                    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label></td>
+                
+                <td colspan="2">
+                    <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label> - <asp:Label ID="Label2" runat="server" Text="Label" ForeColor="Gray"></asp:Label>
+
+                 <br /> <br />  Denomination :<asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+                 <br />Fine calculated for : <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label> Month
+      
+                </td>
+                
             </tr>
 
-            
             <tr>
-                <td>Account name</td>
-                <td>
-                    <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label></td>
-            </tr>
-
-            
-            <tr>
-                <td>Denomination</td>
-                <td>
-                    <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label></td>
-            </tr>
-
-            
-            <tr>
-                <td>Fine calculated for</td>
-                <td>
-                    <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label> Month</td>
-            </tr>
-
-            
-            <tr>
-                <td>Fine amount</td>
-                <td>
-                    <asp:Label ID="Label6" runat="server" Text="Label" Font-Size="X-Large"></asp:Label></td>
+                <td>Fine amount : <asp:Label ID="Label6" runat="server" Text="Label" Font-Size="Medium"></asp:Label></td>
             </tr>
         </table>
-
+            </asp:Panel>
         <script>
 
         $(document).ready(function () {
 
             $('#accType').click(function () {
-                $('.payment-form ul').css({ 'display': 'block' });
+                $('.fine-form ul').css({ 'display': 'block' });
             });
-            $('.payment-form ul li').click(function () {
-              
+            $('.fine-form ul li').click(function () {
+                if ($(this).text() === "supervisor_accountJoint") {
+                    $('.fine-form h2 input:nth-of-type(1)').css({ 'z-index': '-1' });
+                    $('.fine-form h2 input:nth-of-type(2)').css({ 'z-index': '1' });
+                } else {
+                    $('.fine-form h2 input:nth-of-type(1)').css({ 'z-index': '1' });
+                    $('.fine-form h2 input:nth-of-type(2)').css({ 'z-index': '-1' });
+                }
                 var n = $(this).find("i").text();
                 $('#accType i:nth-of-type(1)').text(n);
-                $('.payment-form ul').css({ 'display': 'none' });
+                $('.fine-form ul').css({ 'display': 'none' });
             });
         });
     </script>

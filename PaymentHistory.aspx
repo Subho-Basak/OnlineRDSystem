@@ -11,10 +11,11 @@
     <div class="history-container">
         <section>
             <h2>Payment History</h2>
+            <asp:Button ID="Button1" runat="server" Text="JOINT" CssClass="tab" OnClick="Button1_Click" /><asp:Button ID="Button2" runat="server" Text="SINGLE" CssClass="tab" OnClick="Button2_Click" />
             <asp:TextBox ID="TextBox1" runat="server" placeholder="Search history" CssClass="srch"></asp:TextBox>
         </section>
         <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
-        <h5 id="noRec"><i class="material-icons">announcement</i><br /><label>no record</label></h5>
+        <h5 runat="server" id="noRec"><i class="material-icons">announcement</i><br /><label>There is no payment history.</label></h5>
     </div>
 
     <script>

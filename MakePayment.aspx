@@ -9,23 +9,26 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="payment-form">
-        <h2>Make Payment <button type="button" id="accType" value=""><i runat="server" id="acctypeicon" class="material-icons"></i><i class="material-icons">arrow_drop_down</i></button>
-            <asp:TextBox ID="TextBox1" runat="server" placeholder="Account number" OnTextChanged="TextBox1_TextChanged"></asp:TextBox></h2>
+        <h2>Make Payment <button type="button" id="accType" value=""><i runat="server" id="acctypeicon" class="material-icons">person</i><i class="material-icons">arrow_drop_down</i></button>
+            <asp:TextBox ID="TextBox1" runat="server" placeholder="Account number" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+              <asp:TextBox ID="TextBox6" runat="server"  placeholder="joint Account number" OnTextChanged="TextBox6_TextChanged"></asp:TextBox>
+        </h2>
+      
 
         <ul>
             <li><i class="material-icons">person</i>Single</li>
              <li><i class="material-icons">supervisor_account</i>Joint</li>
         </ul>
         <h5 runat="server" id="theMsg"><i class="material-icons">announcement</i><br />
-            <asp:Label ID="Label1" runat="server" Text="Label">Sorry we couldn't find any account</asp:Label></h5>
+            <asp:Label ID="Label1" runat="server" Text="Label">Enter a valid account number to get the payment details.</asp:Label></h5>
      
         <asp:Panel ID="tableContainer" runat="server">
       <table>
           <tr>
-              <td>
-                  <asp:Label ID="Label2" runat="server" Text="Account holder name"></asp:Label></td>
-              <td>
-                  <asp:Label ID="Label3" runat="server" Text="account number"></asp:Label></td>
+              <td colspan="2" style="text-align:center;">
+                  <i class="material-icons" style="color:#555;padding:1%;background:#eee;border-radius:50%">person</i><asp:Label ID="Label2" runat="server" Text="Account holder name" Font-Size="Larger"></asp:Label><br />
+             
+                  <asp:Label ID="Label3" runat="server" Text="account number" Font-Size="X-Large"></asp:Label><br /></td>
           </tr>
 
           <tr>
@@ -83,12 +86,21 @@
 
         $(document).ready(function () {
            // $("tableContainer").css({ 'display': 'none' });
+            $('.payment-form h2 input:nth-of-type(2)').css({ 'z-index': '-1' });
 
             $('#accType').click(function () {
                 $('.payment-form > ul').css({ 'display': 'block' });
             });
             $('.payment-form > ul li').click(function () {
               
+                if ($(this).text() === "supervisor_accountJoint") {
+                    $('.payment-form h2 input:nth-of-type(1)').css({ 'z-index': '-1' });
+                    $('.payment-form h2 input:nth-of-type(2)').css({ 'z-index': '1' });
+                } else {
+                    $('.payment-form h2 input:nth-of-type(1)').css({ 'z-index': '1' });
+                    $('.payment-form h2 input:nth-of-type(2)').css({ 'z-index': '-1' });
+                }
+
                 var n = $(this).find("i").text();
                 $('#accType i:nth-of-type(1)').text(n);
                

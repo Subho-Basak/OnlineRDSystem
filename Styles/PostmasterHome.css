@@ -6,7 +6,19 @@
     padding-bottom:8%;
     height:100% !important;
     background:#fff;
+    border-bottom:1px solid #ccc;
 }
+.serach-result-container h5{
+    text-align:center;
+    font-size:100%;
+    color:gray;
+    font-weight:normal;
+}
+.serach-result-container h5 i{
+    color:#ccc;
+    font-size:300%;
+}
+
 .serach-result-container p{
     font-weight:600;
     border-bottom:1px solid #aaa;

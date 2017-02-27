@@ -14,19 +14,30 @@ public partial class ViewAccounts : System.Web.UI.Page
     StringBuilder htmlTable = new StringBuilder();
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(!IsPostBack)
-        viewSingleAccount();
+        if (!IsPostBack)
+        {
+         
+            Label3.Style.Add("border-bottom", "3px solid #444");
+            viewSingleAccount();
 
+        }
+        
+       
+        ///theMsg.Visible = true;
     }
     protected void Label2_Click(Object sender, EventArgs e)
     {
 
         viewJointAccount();
+        Label3.Style.Remove("border-bottom");
+        Label2.Style.Add("border-bottom", "3px solid #444");
     }
     protected void Label3_Click(Object sender, EventArgs e)
     {
 
         viewSingleAccount();
+        Label2.Style.Remove("border-bottom");
+       Label3.Style.Add("border-bottom", "3px solid #444");
     }
     private void viewJointAccount()
     {
@@ -40,7 +51,7 @@ public partial class ViewAccounts : System.Web.UI.Page
         if (articleReader.HasRows)
         {
             string type = "joint";
-            Label1.Visible = false;
+            theMsg.Visible = false;
             while (articleReader.Read())
             {
                 htmlTable.Append("<tr>");
@@ -62,6 +73,10 @@ public partial class ViewAccounts : System.Web.UI.Page
             articleReader.Close();
             articleReader.Dispose();
         }
+        else
+        {
+            theMsg.Visible = true;
+        }
 
     
 }
@@ -78,7 +93,7 @@ public partial class ViewAccounts : System.Web.UI.Page
         if (articleReader.HasRows)
         {
             string type = "single";
-            Label1.Visible = false;
+           theMsg.Visible = false;
             while (articleReader.Read())
             {
                 htmlTable.Append("<tr>");
@@ -98,6 +113,10 @@ public partial class ViewAccounts : System.Web.UI.Page
 
             articleReader.Close();
             articleReader.Dispose();
+        }
+        else
+        {
+            theMsg.Visible = true;
         }
 
     }

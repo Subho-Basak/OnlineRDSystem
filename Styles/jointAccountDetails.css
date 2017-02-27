@@ -1,102 +1,72 @@
-﻿.account-form{
+﻿.joint-account-details{
     float:right;
-    margin-top:9%;
-    width:71.4%;
+    margin-top:11%;
+    width:71.5%;
     padding:1% 2%;
     padding-bottom:8%;
     height:100%;
     background:#fff;
+    border-bottom:1px solid #ccc;
 }
-.account-form h2{
-    color:#444;
-    padding:2% 0;
-    border-bottom:1px solid #ddd;
-}
-.account-form h2 span{
-    margin-left:4%;
-    padding:0 4%;
-    font-weight:normal;
+.joint-account-details h5{
+    text-align:center;
+    font-size:100%;
     color:gray;
-    border-left:1px solid #ccc;
+    font-weight:normal;
 }
-.account-form h2 button{
-    float:right;
-    background:none;
-    padding:0 5%;
-    border:none;
-    border-radius:50%;
-    cursor:pointer;
-    outline:none;
-}
-.account-form h2 button i{ border-radius:50%; padding:0.8%;}
-.account-form h2 button i:hover{
-    background:#eee;
-}
-.account-form h2 button i{
-color:#555;
-position:absolute;
-margin-top:-0.3%;
-margin-left:1.2%;
+.joint-account-details h5 i{
+    color:#ccc;
+    font-size:300%;
 }
 
-.account-form ul{
-    position:absolute;
-    margin-top:-2%;
-    right:2%;
-    width:15%;
-    background:#eee;
-    list-style:none;
-    padding:0;
-    transform-origin:top right;
-    transform:scale(0);
-    transition:transform 0.2s;
-    box-shadow:0 2px 8px 2px #bbb;
+.joint-account-details section{
+  border-bottom:1px solid #ddd;
+  font-size:90%;
+  padding:3% 0;
 }
-.account-form ul li {
-        margin: 0;
-        padding: 5% 10%;
-    
-    }
-.account-form ul li:hover {
-        background:#ccc;
-}    
-.account-form ul li a{
-    color:#222;
-  }   
-   .account-form ul.active{
-           transform:scale(1);
-    transform-origin:top right;
-   }              
-.account-form table{
+.joint-account-details section div{
+    float:left;
+    width:48%;
+    padding:2% 0;
+
+}
+.joint-account-details section div:nth-of-type(2){
+    border-left:1px solid #ccc;
+    float:right;
+}
+.joint-account-details section img{
+    float:left;
+    margin:0% 4%;
+    width:15%;
+}
+.joint-account-details section button{
+    float:right;
+    border-radius:50%;
+    padding:0.5% 0.7%;
+    color:#666;
+    cursor:pointer;
+    background:none;
+    border:none;
+    outline:none;
+}
+
+.joint-account-details table{
     width:100%;
 }
-.account-form table tr td{
-    width:33%;
-}
-.account-form table tr td p{
+.joint-account-details table tr td p{
     font-weight:600;
     padding:2% 0;
     color:gray;
     border-bottom:1px solid #eee;
 }
-.account-form table tr td label{
+.joint-account-details table tr td label{
      margin:2%;
     font-size:80%;
 }
-.account-form table tr td i{
-    padding:0.5% 1.5%;
-    font-size:70%;
-    background:#ddd;
-    font-style:normal;
-    border-radius:50%;
-    visibility:hidden;
-    color:white;
+.joint-account-details table tr td{
+    width:33%;
 }
-.account-form table tr td span{
-    padding:0 1%;
-    font-size:80%;
-}
-.account-form table tr td input{
+.joint-account-details table tr td input{
     margin:2%;
     width:90%;
     padding:2%;
@@ -123,7 +93,7 @@ margin-left:1.2%;
 	top: -2px;
 	border-radius:50%;
 	background: #fff;
-	border:1px solid #aaa;
+	border:2px solid #aaa;
 
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222',
 		endColorstr='#45484d', GradientType=0);
@@ -150,12 +120,12 @@ margin-left:1.2%;
 }
 
 .squaredThree label:hover {
-	border:1px solid #555;
+	border:2px solid #555;
 	
 	
 }
 
-.squaredThree .gnd:checked+label {
+.squaredThree input[type=radio]:checked+label {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 	filter: alpha(opacity = 100);
 	opacity: 1;
@@ -163,9 +133,9 @@ margin-left:1.2%;
 	border:1px solid #555;
 }
 
-.squaredThree .gnd {
-	width: 10px;
-	height: 10px;
+.squaredThree input[type=radio] {
+	width: 13px;
+	height: 13px;
 	margin-left: 0px;
 	margin-top: 20px;
 	outline: none;
@@ -176,8 +146,8 @@ margin-left:1.2%;
     right:0;
     float:right;
     width:68.5%;
-    height:auto;
-    padding:1% 3%;
+    height:0;
+    padding:0% 3%;
     background:#256ae6;
     box-shadow:0 -2px 8px 2px #ccc;
 }
@@ -188,17 +158,38 @@ margin-left:1.2%;
     width:100px;
     cursor:pointer;
     border-radius:2px;
-    box-shadow:0 1px 1px 0px #1248c4;
+   
 }
-
-.error{
-
-    width:40%;
-    padding:1%;
-    float:left;
+.overflow-menu{
+    position:absolute;
+    float:right;
+    margin:3% 56%;
+    list-style:none;
+    background:#fff;
+    padding:1.5%;
+    width:12%;
+    height:auto;
+    box-shadow:0 1px 2px 1px #ccc;
+    overflow:hidden;
+    transform:scale(0);
+    transform-origin:top right;
+    transition:all 0.2s;
 }
-.error i{
-    font-size:140%;
-    float:left;
-    padding:0 2%;
+.overflow-menu li{
+    margin:0;
+    width:100%;
+    padding:8%;
+}
+.overflow-menu li a{
+color:#444;
+}
+.overflow-menu.active{
+    transform:scale(1);
+    transform-origin:top right;
+}
+.nomineeLbl{
+    margin:2%;
+    font-size:15px;
+    font-weight:bold;
+    color:#333;
 }

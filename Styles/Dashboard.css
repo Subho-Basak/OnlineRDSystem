@@ -20,13 +20,16 @@ header{
     width:98%;
     height:6%;
     padding:1%;
-    background:white;
-     z-index:10;
+    background:#555;
+    z-index:90;
+  
 }
 header h1{
     float:left;
     font-size:120%;
+    padding:0 5%;
     margin:0;
+    color:#aaa;
     width:60%;
 }
 header section{
@@ -53,6 +56,7 @@ header h4{
     height:90%;
     background:#f5f5f5;
     overflow:hidden;
+    box-shadow:0 1px 2px 1px #ccc;
    
 }
 .nav-drawer h3{
@@ -109,7 +113,7 @@ header h4{
     padding:1%;
     width:73%;
     height:auto;
-    background:#eee;
+    background:#ccc;
     margin:0;
     z-index:2;
 }
@@ -137,7 +141,7 @@ header h4{
     position:absolute;
     top:64%;
     left:3%;
-    width:18%;
+    width:15%;
     float:left;
     list-style:none;
     background:#eee;
@@ -155,19 +159,21 @@ header h4{
 background:#ccc;    
     }
 .search-bar input{
+
     float:left;
     margin:0%;
     margin-top:-2.3%;
-    padding:1.7% 2%;
-    width:60%;
-    background:#ddd;
+    padding:1.5% 2%;
+    font-size:85%;
+    width:50%;
+    background:#c5c5c5;
     border:none;  
 }
 .search-bar span{
-    position:absolute;
-    font-size:70%;
-    left:20%;
-    bottom:-2%;
+    padding:0 2%;
+    font-size:80%;
+    color:#cf3f3f;
+   
 }
 #scroll::-webkit-scrollbar-track
 {

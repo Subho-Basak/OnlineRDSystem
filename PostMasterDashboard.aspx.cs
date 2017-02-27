@@ -37,8 +37,8 @@ public partial class PostMasterDashboard : System.Web.UI.Page
 
         if (articleReader.HasRows)
         {
-            string type = "joint";
-            //Label1.Visible = false;
+           // string type = "joint";
+            theMsg.Visible = false;
             while (articleReader.Read())
             {
                 htmlTable.Append("<tr>");
@@ -61,6 +61,10 @@ public partial class PostMasterDashboard : System.Web.UI.Page
             articleReader.Dispose();
             htmlTable.Clear();
         }
+        else
+        {
+          //  theMsg.Visible = true;
+        }
 
 
     }
@@ -77,8 +81,9 @@ public partial class PostMasterDashboard : System.Web.UI.Page
 
         if (articleReader.HasRows)
         {
-            string type = "single";
-           // Label1.Visible = false;
+           // string type = "single";
+           theMsg.Visible = false;
+            
             while (articleReader.Read())
             {
                 htmlTable.Append("<tr>");
@@ -99,6 +104,10 @@ public partial class PostMasterDashboard : System.Web.UI.Page
             articleReader.Close();
             articleReader.Dispose();
             htmlTable.Clear();
+        }
+        else
+        {
+           // theMsg.Visible = true;
         }
 
     }

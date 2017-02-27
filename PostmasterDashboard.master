@@ -31,15 +31,14 @@
     <div class="nav-drawer">
 
         <h3>My Dashboard</h3>
-        <asp:Button ID="Button1" runat="server" Text="LOGOUT" BackColor="#256AE6" ForeColor="White" Height="34px" Width="84px" />
+        <asp:Button ID="Button1" runat="server" Text="LOGOUT" BackColor="#256AE6" ForeColor="White" Height="34px" Width="84px" OnClick="Button1_Click" />
         <ul id="scroll">
             <div class="force-overflow"></div>
             <li><span>ACCOUNT DETAILS</span>
                 <ul>
                     <li><a href="DemoPage.aspx">Add new account</a></li>
-                    <li><a href="#">Update account</a></li>
                     <li><a href="ViewAccounts.aspx">View accounts</a></li>
-                    <li><a href="#">Delete account</a></li>
+                    <li><a href="DeleteAccounts.aspx">Delete account</a></li>
 
                 </ul>
             </li>
@@ -58,13 +57,13 @@
         </ul>
     </div>
     <div class="search-bar">
-        <asp:TextBox ID="dropdown" runat="server" Text="Account Number"></asp:TextBox><i></i><br />
+        <asp:TextBox ID="dropdown" runat="server" Text="Account Number" ReadOnly="True"></asp:TextBox><i></i><br />
         <ul>
             <li>Account Number</li>
-            <li>Account Holder </li>
+            <li>Account Holder</li>
         </ul>
-        <asp:TextBox ID="TextBox1" runat="server" placeholder="Search" onkeypress="return srcType(event,this.id)" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
-            <span runat="server" id="errMsg"></span>
+        <asp:TextBox ID="TextBox2" runat="server" placeholder="name" OnTextChanged="TextBox2_TextChanged"></asp:TextBox> <asp:TextBox ID="TextBox1" runat="server" placeholder="Search" onkeypress="return srcType(event,this.id)" OnTextChanged="TextBox1_TextChanged" MaxLength="10"></asp:TextBox><span runat="server" id="errMsg"></span>
+            
     </div>
     <div>
          <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
@@ -78,11 +77,22 @@
      
         $(document).ready(function () {
           
+          
+            $(".search-bar input:nth-of-type(2)").hide();
+
+
             $('#dropdown').click(function () {
                 $('.search-bar ul').css({ 'display': 'block' });
             });
             $('.search-bar ul li').click(function () {
                 var n = $(this).text();
+                if (n == "Account Number") {
+                    $(".search-bar input:nth-of-type(2)").hide();
+                    $(".search-bar input:nth-of-type(3)").show();
+                } else {
+                    $(".search-bar input:nth-of-type(3)").hide();
+                    $(".search-bar input:nth-of-type(2)").show();
+                }
                 $('#dropdown').val(n);
                 $('.search-bar ul').css({ 'display': 'none' });
             });

@@ -12,12 +12,12 @@ public class FetchImage : IHttpHandler
     Dbconnection db = new Dbconnection();
     public void ProcessRequest(HttpContext context)
     {
-        Int32 empno;
+        String empno;
         string type = "";
         //int id;
         if (context.Request.QueryString["accno"] != null )
         {
-            empno = Convert.ToInt32(context.Request.QueryString["accno"]);
+            empno = context.Request.QueryString["accno"];
             //type= context.Request.QueryString["type"];
         }
 
@@ -40,7 +40,7 @@ public class FetchImage : IHttpHandler
 
 
 
-    public Stream ShowEmpImage(int empno,string type)
+    public Stream ShowEmpImage(String empno,string type)
     {
         String sql = "SELECT profilephoto FROM SingleAccountEntryTable WHERE accountno = @ID";
 

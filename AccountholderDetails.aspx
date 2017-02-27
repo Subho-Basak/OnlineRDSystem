@@ -12,9 +12,9 @@
 
     <div class="account-form">
         <section>
-            <button type="button"><i class="material-icons">more_vert</i></button>
+           <!-- <button type="button"><i class="material-icons">more_vert</i></button> -->
             <ul class="overflow-menu">
-                <li><a href="#">Make Payment</a></li>
+                <li><a href="#" runat="server" id="pay">Make Payment</a></li>
                 <li><a href="#">Check Payment</a></li>
                 <li><a href="#">Check Fine</a></li>
                 <li><a href="#">Check Due</a></li>
@@ -38,7 +38,7 @@
                  <td colspan="3"> <p>Contact Details</p></td>
              </tr>
              <tr>
-                  <td colspan="3"><label>Address</label></td>
+                  <td><label>Address</label></td>
                  
              </tr>
              <tr>
@@ -103,7 +103,7 @@
              <tr>
                  <td colspan="2"> <p>Nominee Contact Details</p></td>
                  <td><div class="squaredThree" >
-					<input type="radio" value="None" id="same" class="gnd"
+					<input type="checkbox" value="None" id="same" class="gnd"
 						name="check" /> &nbsp;&nbsp;&nbsp;Same as above<label for="same"></label>
 				</div></td>
              </tr>
@@ -149,8 +149,12 @@
                 <asp:Button ID="submitBtn" runat="server" Text="SAVE UPDATE" BackColor="#005CB9" BorderStyle="None" ForeColor="White" Height="39px" Width="201px" OnClick="submitBtn_Click" /><asp:Button ID="cancelBtn" runat="server" Text="CANCEL" Height="39px" Width="201px" ForeColor="#CCFFFF" BorderStyle="None" />
            </div>
 
-        
+        <asp:Panel ID="Panel1" runat="server" CssClass="msg">
+            <label>Account updated successfully</label>
+            <i class="material-icons">clear</i>
+        </asp:Panel>
     </div>
+   
 
      <script>
 
@@ -159,17 +163,19 @@
             $(".account-form table input").attr('readonly', 'readonly');
             $(".account-form table input").css({ "border": "none" });
 
-            $('.account-form section button:nth-of-type(1)').click(function () {
+            $('.account-form section button:nth-of-type(2)').click(function () {
                 $('.overflow-menu').toggleClass("active");
             });
 
 
-            $('.account-form section button:nth-of-type(2)').click(function () {
+            $('.account-form section button:nth-of-type(1)').click(function () {
                 $('.submit-panel').animate({ 'height': '6%', 'padding': '1% 3%' }, "fast");
                 $(".account-form table input").removeAttr('readonly');
                 $(".account-form table input").css({ "border": "1px solid #ddd" });
             });
-         
+            $('.msg i').click(function () {
+                $('.msg').hide();
+            });
         
         });
     </script>

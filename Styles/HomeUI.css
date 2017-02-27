@@ -68,11 +68,11 @@ header h4{
     font-size:280%;
 }
 #login_form{
-    margin:-6% auto;
+    margin:-8% auto;
     width:20%;
     height:45%;
     background:#eee;
-    padding:2% 5%;
+    padding:2% 4%;
 }
 #login_form h4{
     margin:0;
@@ -101,6 +101,7 @@ header h4{
 #login_form input{
     margin:3% 0;
     padding:3%;
+    width:93%;
     background:#ddd;
     border:1px solid #ddd;
 }
@@ -111,7 +112,8 @@ header h4{
     color:#1e85f6;
     margin:2% 0;
 }
-#LoginBtn{
+.login{
+    float:right;
     width:100px;
     padding:14px;
     color:white;

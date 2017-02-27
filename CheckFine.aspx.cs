@@ -12,59 +12,109 @@ public partial class CheckFine : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
+        if (!IsPostBack)
+        {
+
+            tableContainer.Visible = false;
+        }
     }
 
+
+    //Text Box to search against account number of Single Account
     protected void TextBox1_TextChanged(object sender, EventArgs e)
     {
-        int id = Convert.ToInt32(TextBox1.Text);
-        ArrayList list = lc.fetchSingleAccount(id);
-        String lpdate = lc.fetchPaymentDate(id);
-        if (list != null)
+        // String id = TextBox1.Text;
+        ArrayList list = lc.fetchFewSingleAccount(TextBox1.Text);
+        String lpdate = lc.fetchPaymentDate(TextBox1.Text);
+
+        if (list != null && lpdate != null)
         {
-            Label1.Visible = false;
+            checkFineDetails(list, lpdate);
+        }else
+        {
+            theMsg.Visible = true;
+            Label1.Visible = true;
+            tableContainer.Visible = false;
         }
 
-        String date = list[12].ToString();
-        Label2.Text = id.ToString();
-        Label3.Text= list[1].ToString() + " " + list[2].ToString() + " " + list[3].ToString();
-        DateTime opdate = Convert.ToDateTime(date);
-        Label4.Text = list[14].ToString();
-        double amount = Convert.ToDouble(Label4.Text);
 
-        double fine = 0.0;
-        if (lpdate != "")
+    }
+
+
+    //Text Box to search against account number of Joint Account
+    protected void TextBox2_TextChanged(object sender, EventArgs e)
+    {
+
+        //String id = TextBox1.Text;
+        ArrayList list = lc.fetchFewJointAccount(TextBox2.Text);
+        String lpdate = lc.fetchPaymentDate(TextBox2.Text);
+
+        if (list != null && lpdate != null)
         {
+            checkFineDetails(list, lpdate);
+        }
+        else
+        {
+            theMsg.Visible = true;
+            Label1.Visible = true;
+            tableContainer.Visible = false;
+        }
+       
+    }
 
-            DateTime FirstDate = Convert.ToDateTime(lpdate);
-            DateTime EndDate = DateTime.Now;
+    //T calculate Fine and display all details of account along with fine
+    private void checkFineDetails(ArrayList list, string lpdate)
+    {
+       
+            theMsg.Visible = false;
+            Label1.Visible = false;
+            tableContainer.Visible = true;
 
-            int diff = (EndDate.Year - FirstDate.Year) * 12 + (EndDate.Month - FirstDate.Month);
 
-            
-            // Response.Write(diff);
-            if (opdate.Day <= 15)
+            Label2.Text = list[0].ToString();
+            Label3.Text = list[1].ToString() + " " + list[2].ToString() + " " + list[3].ToString();
+            String date = list[4].ToString();
+            DateTime opdate = Convert.ToDateTime(date);
+            Label4.Text = list[5].ToString();
+
+
+            double amount = Convert.ToDouble(Label4.Text);
+
+            double fine = 0.0;
+            if (lpdate != "")
             {
-                if (EndDate.Day > 15)
+
+                DateTime FirstDate = Convert.ToDateTime(lpdate);
+                DateTime EndDate = DateTime.Now;
+
+                int diff = (EndDate.Year - FirstDate.Year) * 12 + (EndDate.Month - FirstDate.Month);
+
+
+                // Response.Write(diff);
+                if (opdate.Day <= 15)
                 {
-                    fine = 0.04 * amount * lc.calFine(diff);
-                    Label5.Text = diff.ToString();
+                    if (EndDate.Day > 15)
+                    {
+                        fine = 0.04 * amount * lc.calFine(diff);
+                        Label5.Text = diff.ToString();
+                    }
+                    else
+                    {
+                        fine = 0.04 * amount * lc.calFine(diff - 1);
+                        Label5.Text = (diff - 1).ToString();
+                    }
                 }
                 else
                 {
                     fine = 0.04 * amount * lc.calFine(diff - 1);
-                    Label5.Text = (diff-1).ToString();
+                    Label5.Text = (diff - 1).ToString();
                 }
-            }
-            else
-            {
-                fine = 0.04 * amount * lc.calFine(diff - 1);
-                Label5.Text = (diff - 1).ToString();
+
             }
 
+
+            Label6.Text = fine.ToString();
         }
-
-        
-        Label6.Text = fine.ToString();
-
-    }
+       
+    
 }
